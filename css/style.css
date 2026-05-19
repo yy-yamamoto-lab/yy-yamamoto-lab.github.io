@@ -1,0 +1,205 @@
+@charset "utf-8";
+
+/* =========================================================
+   知的高性能メディアシステム研究室 — トップページ
+   白背景・黒文字に青を差し色（個人HPのリンク色 #006580）。
+   青い縦バーが〈ラベル＋見出し〉をまとめる構成。
+   ========================================================= */
+
+:root {
+	--text:    #1c1c1c;
+	--mute:    #666666;
+	--line:    #e3e3e3;
+	--dash:    #c9c9c9;
+	--accent:  #006580;
+	--maxw:    760px;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background: #ffffff;
+	color: var(--text);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans",
+		"Noto Sans CJK JP", "Yu Gothic", Meiryo, sans-serif;
+	line-height: 1.9;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* ----- Header ----- */
+.site-header {
+	border-top: 3px solid var(--accent);
+	border-bottom: 1px solid var(--line);
+	padding: 1.3em clamp(1.4em, 5vw, 2.4em);
+}
+
+.brand {
+	color: var(--text);
+	text-decoration: none;
+	font-size: 0.95rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	transition: color 0.2s;
+}
+
+.brand:hover {
+	color: var(--accent);
+}
+
+/* ----- Hero ----- */
+.hero-inner {
+	max-width: var(--maxw);
+	margin: 0 auto;
+	padding: clamp(3.5em, 10vw, 6em) clamp(1.4em, 5vw, 2.4em) clamp(3em, 8vw, 4.5em);
+}
+
+.eyebrow {
+	color: var(--accent);
+	font-size: 0.72rem;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	margin-bottom: 1.4em;
+}
+
+.hero h1 {
+	font-size: clamp(1.9rem, 6.5vw, 3rem);
+	font-weight: 700;
+	line-height: 1.45;
+	letter-spacing: 0.03em;
+}
+
+.hero-rule {
+	display: block;
+	width: 2.8em;
+	height: 3px;
+	background: var(--accent);
+	margin: 1.5em 0;
+}
+
+.hero-sub {
+	color: var(--mute);
+	font-size: 0.95rem;
+	letter-spacing: 0.06em;
+}
+
+/* ----- Layout ----- */
+main {
+	max-width: var(--maxw);
+	margin: 0 auto;
+	padding: 0 clamp(1.4em, 5vw, 2.4em);
+}
+
+/* ----- Content blocks ----- */
+.block {
+	border-top: 1px dashed var(--dash);
+	padding: clamp(2.8em, 8vw, 4em) 0;
+}
+
+.block-head {
+	position: relative;
+	padding-left: 0.9em;
+	margin-bottom: 0.95em;
+}
+
+.block-head::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.15em;
+	bottom: 0.15em;
+	width: 4px;
+	background: var(--accent);
+	border-radius: 1px;
+}
+
+.kicker {
+	color: var(--accent);
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	margin-bottom: 0.5em;
+}
+
+.block-head h2 {
+	font-size: clamp(1.4rem, 3.8vw, 1.95rem);
+	font-weight: 700;
+	line-height: 1.55;
+	letter-spacing: 0.03em;
+	word-break: auto-phrase;
+}
+
+.block p {
+	font-size: 1rem;
+	line-height: 2;
+}
+
+.block p + p {
+	margin-top: 1.4em;
+}
+
+/* ----- Research themes ----- */
+.theme-list {
+	list-style: none;
+}
+
+.theme-list li {
+	padding: 1.3em 0 1.3em 1.4em;
+	border-bottom: 1px solid var(--line);
+	position: relative;
+}
+
+.theme-list li:first-child {
+	border-top: 1px solid var(--line);
+}
+
+.theme-list li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 2.25em;
+	width: 0.6em;
+	height: 2px;
+	background: var(--accent);
+}
+
+.theme-list h3 {
+	font-size: clamp(1rem, 1.8vw, 1.1rem);
+	font-weight: 700;
+	line-height: 1.7;
+	letter-spacing: 0.02em;
+	margin-bottom: 0.5em;
+	word-break: auto-phrase;
+}
+
+.theme-list p {
+	color: var(--mute);
+	font-size: 0.92rem;
+	line-height: 1.9;
+}
+
+/* ----- Footer ----- */
+.site-footer {
+	border-top: 1px dashed var(--dash);
+	margin-top: 2em;
+	padding: 2.6em clamp(1.4em, 5vw, 2.4em);
+	text-align: center;
+	font-size: 0.85rem;
+	color: var(--mute);
+}
+
+.site-footer .copy {
+	font-size: 0.72rem;
+	letter-spacing: 0.08em;
+	margin-top: 0.6em;
+}
