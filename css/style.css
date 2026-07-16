@@ -41,6 +41,24 @@ body {
 	border-top: 3px solid var(--accent);
 	border-bottom: 1px solid var(--line);
 	padding: 1.3em clamp(1.4em, 5vw, 2.4em);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1em;
+	flex-wrap: wrap;
+}
+
+.site-nav a {
+	color: var(--mute);
+	text-decoration: none;
+	font-size: 0.85rem;
+	letter-spacing: 0.04em;
+	transition: color 0.2s;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+	color: var(--accent);
 }
 
 .brand {
@@ -186,6 +204,109 @@ main {
 	color: var(--mute);
 	font-size: 0.92rem;
 	line-height: 1.9;
+}
+
+/* ----- Page hero (下層ページ) ----- */
+.hero--page .hero-inner {
+	padding: clamp(2.4em, 6vw, 3.6em) clamp(1.4em, 5vw, 2.4em) clamp(2em, 5vw, 3em);
+}
+
+.hero--page h1 {
+	font-size: clamp(1.5rem, 4.5vw, 2.2rem);
+}
+
+/* ----- 下層ページの本文パーツ ----- */
+.block h3 {
+	font-size: 1.05rem;
+	font-weight: 700;
+	line-height: 1.7;
+	letter-spacing: 0.02em;
+	margin: 2em 0 0.7em;
+	padding-left: 0.8em;
+	border-left: 3px solid var(--accent);
+}
+
+.block h3:first-of-type {
+	margin-top: 1.6em;
+}
+
+.plain-list {
+	list-style: none;
+	margin: 1em 0;
+}
+
+.plain-list li {
+	position: relative;
+	padding: 0.35em 0 0.35em 1.3em;
+	line-height: 1.9;
+}
+
+.plain-list li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 1.05em;
+	width: 0.55em;
+	height: 2px;
+	background: var(--accent);
+}
+
+.week-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 1.2em 0;
+	font-size: 0.95rem;
+}
+
+.week-table th,
+.week-table td {
+	border: 1px solid var(--line);
+	padding: 0.55em 0.9em;
+	text-align: left;
+	line-height: 1.7;
+}
+
+.week-table th {
+	background: #f6f8f9;
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.faq dt {
+	font-weight: 700;
+	margin-top: 1.6em;
+	padding-left: 1.5em;
+	position: relative;
+	line-height: 1.8;
+}
+
+.faq dt::before {
+	content: "Q";
+	position: absolute;
+	left: 0;
+	color: var(--accent);
+	font-weight: 700;
+}
+
+.faq dd {
+	margin-top: 0.4em;
+	padding-left: 1.5em;
+	color: var(--text);
+	line-height: 1.9;
+}
+
+.more-link {
+	margin-top: 1.4em;
+}
+
+.more-link a {
+	color: var(--accent);
+	text-decoration: none;
+	font-weight: 700;
+}
+
+.more-link a:hover {
+	text-decoration: underline;
 }
 
 /* ----- Footer ----- */
