@@ -20,6 +20,9 @@
 <meta property="og:description" content="次世代のメディアシステムを創出する。神奈川大学 山本洋太研究室。">
 <meta property="og:type" content="website">
 <link rel="shortcut icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@500;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -28,15 +31,18 @@
 <header class="site-header">
 	<a class="brand" href="/">知的高性能メディアシステム研究室</a>
 	<nav class="site-nav">
+		<a href="#about">研究室について</a>
+		<a href="#research">研究テーマ</a>
 		<a href="for-students.html">配属を希望する学生へ</a>
+		<a href="https://yy-yamamoto.github.io/" target="_blank" rel="noopener">教員ページ</a>
 	</nav>
 </header>
 
 <section class="hero">
 	<div class="hero-inner">
 		<p class="eyebrow">Intelligent High-Performance Media Systems Laboratory</p>
-		<h1>知的高性能<br>メディアシステム研究室</h1>
-		<span class="hero-rule"></span>
+		<h1>知的高性能<br>メディアシステム<span style="white-space:nowrap">研究室</span></h1>
+		<p class="hero-tagline">次世代のメディアシステムを創出する</p>
 		<p class="hero-sub">神奈川大学　山本洋太 研究室</p>
 	</div>
 </section>
@@ -46,7 +52,7 @@
 	<section class="block" id="about">
 		<div class="block-head">
 			<p class="kicker">About</p>
-			<h2>次世代のメディアシステムを創出する</h2>
+			<h2>見せる技術と、見る技術</h2>
 		</div>
 		<p>
 			当研究室が対象とするのは、次世代の「メディアシステム」です。
@@ -72,6 +78,27 @@
 		<div class="block-head">
 			<p class="kicker">Research</p>
 			<h2>研究テーマ</h2>
+		</div>
+		<div class="video-grid">
+			<figure>
+				<video src="media/holo.mp4" poster="media/holo_poster.jpg" autoplay muted loop playsinline></video>
+				<figcaption>電子ホログラフィによる三次元映像の再生
+					<a href="https://doi.org/10.1364/OE.26.034259" target="_blank" rel="noopener">[論文1]</a>
+					<a href="https://doi.org/10.1364/OE.471720" target="_blank" rel="noopener">[論文2]</a>
+				</figcaption>
+			</figure>
+			<figure>
+				<video src="media/traffic.mp4" poster="media/traffic_poster.jpg" style="object-position: left center" autoplay muted loop playsinline></video>
+				<figcaption>AIによる交通映像の解析（車両検出・計数）
+					<a href="https://doi.org/10.1109/ACCESS.2026.3694976" target="_blank" rel="noopener">[論文]</a>
+				</figcaption>
+			</figure>
+			<figure>
+				<video src="media/dig_holo.mp4" poster="media/dig_holo_poster.jpg" autoplay muted loop playsinline></video>
+				<figcaption>ハイスピードカメラによるデジタルホログラフィ
+					<a href="https://doi.org/10.1117/1.OE.59.5.054105" target="_blank" rel="noopener">[論文]</a>
+				</figcaption>
+			</figure>
 		</div>
 		<ul class="theme-list">
 			<li>
@@ -111,6 +138,27 @@
 	<p>知的高性能メディアシステム研究室　山本洋太 研究室</p>
 	<p class="copy">&copy; 2026 Intelligent High-Performance Media Systems Laboratory</p>
 </footer>
+
+<script>
+(function () {
+	const links = Array.from(document.querySelectorAll('.site-nav a[href^="#"]'));
+	const header = document.querySelector('.site-header');
+	function onScroll() {
+		const offset = header.offsetHeight + 24;
+		let current = null;
+		links.forEach(function (a) {
+			const target = document.querySelector(a.getAttribute('href'));
+			if (target && target.getBoundingClientRect().top <= offset) current = a;
+		});
+		links.forEach(function (a) {
+			a.classList.toggle('current', a === current);
+		});
+	}
+	window.addEventListener('scroll', onScroll, { passive: true });
+	window.addEventListener('resize', onScroll, { passive: true });
+	onScroll();
+})();
+</script>
 
 </body>
 

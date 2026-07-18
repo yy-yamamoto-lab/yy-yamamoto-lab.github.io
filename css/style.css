@@ -1,18 +1,25 @@
 @charset "utf-8";
 
 /* =========================================================
-   知的高性能メディアシステム研究室 — トップページ
-   白背景・黒文字に青を差し色（個人HPのリンク色 #006580）。
-   青い縦バーが〈ラベル＋見出し〉をまとめる構成。
+   知的高性能メディアシステム研究室
+   濃紺のヒーロー/フッターで挟んだ白い本文（案A5）。
+   ネイビー #1d3244 ×ティール #2a8f8f。見出しは IBM Plex Sans JP、
+   キッカー・日付類は IBM Plex Mono。動きは研究映像の中身だけ。
    ========================================================= */
 
 :root {
-	--text:    #1c1c1c;
-	--mute:    #666666;
-	--line:    #e3e3e3;
-	--dash:    #c9c9c9;
-	--accent:  #006580;
-	--maxw:    760px;
+	--ink:      #1d3244;
+	--ink-deep: #16283a;
+	--text:     #22303c;
+	--mute:     #64707a;
+	--on-dark:  #a9bac7;
+	--line:     #e5e7e9;
+	--accent:   #2a8f8f;
+	--accent-2: #1e6f70;
+	--shell:    1120px;
+	--font-head: "IBM Plex Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		"Hiragino Sans", "Noto Sans CJK JP", "Yu Gothic", Meiryo, sans-serif;
+	--font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
 }
 
 *,
@@ -23,8 +30,8 @@
 	padding: 0;
 }
 
-html {
-	scroll-behavior: smooth;
+section[id] {
+	scroll-margin-top: 4.6em;
 }
 
 body {
@@ -33,18 +40,43 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans",
 		"Noto Sans CJK JP", "Yu Gothic", Meiryo, sans-serif;
 	line-height: 1.9;
+	overflow-x: hidden;
 	-webkit-font-smoothing: antialiased;
 }
 
 /* ----- Header ----- */
 .site-header {
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	background: rgba(255, 255, 255, 0.96);
 	border-top: 3px solid var(--accent);
 	border-bottom: 1px solid var(--line);
-	padding: 1.3em clamp(1.4em, 5vw, 2.4em);
+	padding: 1em clamp(1.4em, 5vw, 2.4em);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	gap: 1em;
+	flex-wrap: wrap;
+}
+
+.brand {
+	color: var(--ink);
+	text-decoration: none;
+	font-family: var(--font-head);
+	font-size: 0.95rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	transition: color 0.2s;
+}
+
+.brand:hover {
+	color: var(--accent-2);
+}
+
+.site-nav {
+	display: flex;
+	gap: 1.6em;
 	flex-wrap: wrap;
 }
 
@@ -53,107 +85,119 @@ body {
 	text-decoration: none;
 	font-size: 0.85rem;
 	letter-spacing: 0.04em;
+	padding-bottom: 2px;
+	border-bottom: 2px solid transparent;
+	white-space: nowrap;
 	transition: color 0.2s;
 }
 
-.site-nav a:hover,
+.site-nav a:hover {
+	color: var(--accent);
+}
+
+.site-nav a.current,
 .site-nav a[aria-current="page"] {
-	color: var(--accent);
+	color: var(--accent-2);
+	border-bottom-color: var(--accent);
 }
 
-.brand {
-	color: var(--text);
-	text-decoration: none;
-	font-size: 0.95rem;
-	font-weight: 700;
-	letter-spacing: 0.04em;
-	transition: color 0.2s;
+/* ----- Hero（濃紺の面） ----- */
+.hero {
+	background: var(--ink-deep);
 }
 
-.brand:hover {
-	color: var(--accent);
-}
-
-/* ----- Hero ----- */
 .hero-inner {
-	max-width: var(--maxw);
+	max-width: var(--shell);
 	margin: 0 auto;
-	padding: clamp(3.5em, 10vw, 6em) clamp(1.4em, 5vw, 2.4em) clamp(3em, 8vw, 4.5em);
+	padding: clamp(3.2em, 9vw, 5.6em) clamp(1.4em, 5vw, 2.4em) clamp(2.8em, 8vw, 5em);
 }
 
 .eyebrow {
 	color: var(--accent);
-	font-size: 0.72rem;
-	letter-spacing: 0.14em;
+	font-family: var(--font-mono);
+	font-size: 0.7rem;
+	letter-spacing: 0.16em;
 	text-transform: uppercase;
-	margin-bottom: 1.4em;
+	margin-bottom: 1.6em;
 }
 
 .hero h1 {
-	font-size: clamp(1.9rem, 6.5vw, 3rem);
+	color: #ffffff;
+	font-family: var(--font-head);
+	font-size: clamp(1.9rem, 5.4vw, 2.8rem);
 	font-weight: 700;
-	line-height: 1.45;
-	letter-spacing: 0.03em;
+	line-height: 1.5;
+	letter-spacing: 0.04em;
 }
 
-.hero-rule {
-	display: block;
-	width: 2.8em;
-	height: 3px;
-	background: var(--accent);
-	margin: 1.5em 0;
+.hero-tagline {
+	color: #ffffff;
+	font-family: var(--font-head);
+	font-size: clamp(1rem, 2.2vw, 1.2rem);
+	font-weight: 500;
+	letter-spacing: 0.08em;
+	margin-top: 1.8em;
 }
 
 .hero-sub {
-	color: var(--mute);
-	font-size: 0.95rem;
+	color: var(--on-dark);
+	font-size: 0.92rem;
 	letter-spacing: 0.06em;
+	margin-top: 0.9em;
+}
+
+/* 下層ページのヒーロー */
+.hero--page .hero-inner {
+	padding: clamp(2.4em, 6vw, 3.6em) clamp(1.4em, 5vw, 2.4em) clamp(2em, 5vw, 3em);
+}
+
+.hero--page h1 {
+	font-size: clamp(1.5rem, 4.5vw, 2.2rem);
+}
+
+.hero--page .hero-sub {
+	margin-top: 1.2em;
 }
 
 /* ----- Layout ----- */
 main {
-	max-width: var(--maxw);
+	max-width: var(--shell);
 	margin: 0 auto;
 	padding: 0 clamp(1.4em, 5vw, 2.4em);
 }
 
 /* ----- Content blocks ----- */
 .block {
-	border-top: 1px dashed var(--dash);
-	padding: clamp(2.8em, 8vw, 4em) 0;
+	border-top: 1px solid var(--line);
+	padding: clamp(2.8em, 8vw, 4.2em) 0;
+}
+
+.block:first-child {
+	border-top: none;
 }
 
 .block-head {
-	position: relative;
-	padding-left: 0.9em;
-	margin-bottom: 0.95em;
-}
-
-.block-head::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 0.15em;
-	bottom: 0.15em;
-	width: 4px;
-	background: var(--accent);
-	border-radius: 1px;
+	margin-bottom: 0.2em;
 }
 
 .kicker {
-	color: var(--accent);
-	font-size: 0.72rem;
-	font-weight: 700;
-	letter-spacing: 0.18em;
+	color: var(--accent-2);
+	font-family: var(--font-mono);
+	font-size: 0.7rem;
+	font-weight: 500;
+	letter-spacing: 0.2em;
 	text-transform: uppercase;
-	margin-bottom: 0.5em;
+	margin-bottom: 0.7em;
 }
 
-.block-head h2 {
-	font-size: clamp(1.4rem, 3.8vw, 1.95rem);
+.block h2 {
+	color: var(--ink);
+	font-family: var(--font-head);
+	font-size: clamp(1.4rem, 3.8vw, 1.9rem);
 	font-weight: 700;
 	line-height: 1.55;
 	letter-spacing: 0.03em;
+	margin-bottom: 0.8em;
 	word-break: auto-phrase;
 }
 
@@ -166,57 +210,106 @@ main {
 	margin-top: 1.4em;
 }
 
+/* ----- 研究映像（固定グリッド） ----- */
+.video-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.3em;
+	margin: 2.2em 0 0.6em;
+}
+
+.video-grid figure {
+	margin: 0;
+}
+
+.video-grid video {
+	width: 100%;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+	display: block;
+	border-radius: 10px;
+	border: 1px solid var(--line);
+	background: #0d1620;
+}
+
+.video-grid figcaption {
+	font-size: 0.8rem;
+	color: var(--mute);
+	margin-top: 0.6em;
+	line-height: 1.7;
+}
+
+.video-grid figcaption a {
+	color: var(--accent-2);
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.video-grid figcaption a:hover {
+	text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+	.video-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
 /* ----- Research themes ----- */
 .theme-list {
 	list-style: none;
+	margin-top: 1.8em;
+	border-top: 1px solid var(--line);
 }
 
 .theme-list li {
-	padding: 1.3em 0 1.3em 1.4em;
+	padding: 1.3em 0 1.3em 1.6em;
 	border-bottom: 1px solid var(--line);
 	position: relative;
-}
-
-.theme-list li:first-child {
-	border-top: 1px solid var(--line);
 }
 
 .theme-list li::before {
 	content: "";
 	position: absolute;
 	left: 0;
-	top: 2.25em;
-	width: 0.6em;
-	height: 2px;
-	background: var(--accent);
+	top: 2.15em;
+	width: 0.5em;
+	height: 0.5em;
+	border: 2px solid var(--accent);
+	background: #fff;
 }
 
-.theme-list h3 {
+.theme-list li h3 {
+	color: var(--ink);
+	font-family: var(--font-head);
 	font-size: clamp(1rem, 1.8vw, 1.1rem);
 	font-weight: 700;
 	line-height: 1.7;
 	letter-spacing: 0.02em;
-	margin-bottom: 0.5em;
+	margin: 0 0 0.5em;
+	padding-left: 0;
+	border-left: none;
 	word-break: auto-phrase;
 }
 
-.theme-list p {
+.theme-list li p {
 	color: var(--mute);
 	font-size: 0.92rem;
 	line-height: 1.9;
 }
 
-/* ----- Page hero (下層ページ) ----- */
-.hero--page .hero-inner {
-	padding: clamp(2.4em, 6vw, 3.6em) clamp(1.4em, 5vw, 2.4em) clamp(2em, 5vw, 3em);
-}
-
-.hero--page h1 {
-	font-size: clamp(1.5rem, 4.5vw, 2.2rem);
+@media (min-width: 900px) {
+	.theme-list {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		column-gap: 3em;
+	}
 }
 
 /* ----- 下層ページの本文パーツ ----- */
 .block h3 {
+	color: var(--ink);
+	font-family: var(--font-head);
 	font-size: 1.05rem;
 	font-weight: 700;
 	line-height: 1.7;
@@ -245,10 +338,11 @@ main {
 	content: "";
 	position: absolute;
 	left: 0;
-	top: 1.05em;
-	width: 0.55em;
-	height: 2px;
-	background: var(--accent);
+	top: 0.95em;
+	width: 0.45em;
+	height: 0.45em;
+	border: 2px solid var(--accent);
+	background: #fff;
 }
 
 .week-table {
@@ -267,7 +361,7 @@ main {
 }
 
 .week-table th {
-	background: #f6f8f9;
+	background: #f2f7f7;
 	font-weight: 700;
 	white-space: nowrap;
 }
@@ -285,6 +379,7 @@ main {
 	position: absolute;
 	left: 0;
 	color: var(--accent);
+	font-family: var(--font-mono);
 	font-weight: 700;
 }
 
@@ -300,7 +395,7 @@ main {
 }
 
 .more-link a {
-	color: var(--accent);
+	color: var(--accent-2);
 	text-decoration: none;
 	font-weight: 700;
 }
@@ -309,18 +404,20 @@ main {
 	text-decoration: underline;
 }
 
-/* ----- Footer ----- */
+/* ----- Footer（濃紺の面で閉じる） ----- */
 .site-footer {
-	border-top: 1px dashed var(--dash);
-	margin-top: 2em;
-	padding: 2.6em clamp(1.4em, 5vw, 2.4em);
+	background: var(--ink-deep);
+	margin-top: clamp(2.6em, 7vw, 4em);
+	padding: 2.8em clamp(1.4em, 5vw, 2.4em);
 	text-align: center;
 	font-size: 0.85rem;
-	color: var(--mute);
+	color: var(--on-dark);
 }
 
 .site-footer .copy {
-	font-size: 0.72rem;
-	letter-spacing: 0.08em;
-	margin-top: 0.6em;
+	font-family: var(--font-mono);
+	font-size: 0.68rem;
+	letter-spacing: 0.1em;
+	margin-top: 0.7em;
+	color: #6d8294;
 }
